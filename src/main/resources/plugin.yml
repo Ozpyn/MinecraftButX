@@ -4,3 +4,11 @@ version: '${version}'
 main: dev.ozpyn.minecraftButX.MinecraftButX
 api-version: '26.1.2'
 load: POSTWORLD
+
+commands:
+  enable:
+    description: Enable a scenario
+    usage: /enable <scenario>
+  disable:
+    description: Disable a scenario
+    usage: /disable <scenario>
