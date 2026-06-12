@@ -8,6 +8,7 @@ public class SharedInventoryBuilder {
 
     private String name = "sharedinventory";
     private String description = "Selected inventory slots are shared among all players";
+    private boolean disableOnDamage = false;
     private final Set<Integer> slots = new HashSet<>();
 
     public SharedInventoryBuilder name(String name) {
@@ -48,8 +49,18 @@ public class SharedInventoryBuilder {
         return this;
     }
 
+    public SharedInventoryBuilder damagedisable() {
+        for (int i = 0; i < 36; i++) slots.add(i);
+        return this;
+    }
+
+    public SharedInventoryBuilder disableOnDamage() {
+        this.disableOnDamage = true;
+        return this;
+    }
+
     public SharedInventoryScenario build() {
-        return new SharedInventoryScenario(name, description, Set.copyOf(slots));
+        return new SharedInventoryScenario(name, description, Set.copyOf(slots), disableOnDamage);
     }
 
     public static SharedInventoryScenario sharedArmour() {
@@ -82,5 +93,14 @@ public class SharedInventoryBuilder {
             .description("All players share the full inventory")
             .inventory()
             .build();
+    }
+
+    public static SharedInventoryScenario disableSlotOnDamage() {
+        return new SharedInventoryBuilder()
+                .disableOnDamage()
+                .name("disableslotondamage")
+                .description("Randomly disables an inventory slot when a player takes damage")
+                .damagedisable()
+                .build();
     }
 }

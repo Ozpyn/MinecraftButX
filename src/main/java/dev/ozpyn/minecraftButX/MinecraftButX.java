@@ -31,6 +31,7 @@ public final class MinecraftButX extends JavaPlugin {
         scenarioManager.register(SharedInventoryBuilder.sharedHotbar());
         scenarioManager.register(SharedInventoryBuilder.sharedOffhand());
         scenarioManager.register(SharedInventoryBuilder.sharedInventory());
+        scenarioManager.register(SharedInventoryBuilder.disableSlotOnDamage());
 
         var enableCommand = getCommand("enable");
         if (enableCommand != null) {
