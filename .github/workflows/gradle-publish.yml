@@ -3,6 +3,7 @@ name: Build MinecraftButX
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -37,12 +38,10 @@ jobs:
         uses: cloudnode-pro/modrinth-publish@v2
         with:
           token: ${{ secrets.MODRINTH_TOKEN }}
-          project: ${{ vars.MODRINTH_ID }}
+          project: ${{ secrets.MODRINTH_ID }}
           name: ${{ github.event.release.name }}
           version: ${{ github.event.release.tag_name }}
           changelog: ${{ github.event.release.body }}
-          loaders: |-
-            paper
-          game-versions: |-
-            26.1.2
+          loaders: paper
+          game-versions: 26.1.2
           files: build/libs/*.jar
