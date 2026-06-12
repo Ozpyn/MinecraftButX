@@ -5,13 +5,7 @@ import dev.ozpyn.minecraftButX.command.EnableCommand;
 import dev.ozpyn.minecraftButX.scenario.ScenarioManager;
 import dev.ozpyn.minecraftButX.scenario.ScenarioUtils.DropMode;
 import dev.ozpyn.minecraftButX.scenario.SharedInventoryBuilder;
-import dev.ozpyn.minecraftButX.scenario.impl.AllDropsScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.BlockDropsScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.FishingLootScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.MobDropsScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.SharedEffectsScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.SharedHealthScenario;
-import dev.ozpyn.minecraftButX.scenario.impl.SharedHungerScenario;
+import dev.ozpyn.minecraftButX.scenario.impl.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MinecraftButX extends JavaPlugin {
@@ -28,6 +22,7 @@ public final class MinecraftButX extends JavaPlugin {
         scenarioManager.register(new BlockDropsScenario("blockdropsdecided", DropMode.DECIDED));
         scenarioManager.register(new AllDropsScenario("alldrops", DropMode.RANDOM));
         scenarioManager.register(new AllDropsScenario("alldropsdecided", DropMode.DECIDED));
+        scenarioManager.register(new RandomChunkScenario());
         scenarioManager.register(new FishingLootScenario());
         scenarioManager.register(new SharedHungerScenario());
         scenarioManager.register(new SharedHealthScenario());
